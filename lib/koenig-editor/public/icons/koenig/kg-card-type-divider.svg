@@ -1,0 +1,7 @@
+<svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+    <g fill="none" fill-rule="evenodd">
+        <rect fill="#C5D2D9" fill-rule="nonzero" y="2" width="32" height="28" rx="4"/>
+        <rect fill="#424D52" fill-rule="nonzero" x="2" y="15" width="28" height="2" rx="1"/>
+        <path d="M6 6h20c.552 0 1 .448 1 1s-.448 1-1 1H6c-.552 0-1-.448-1-1s.448-1 1-1zm0 14h20c.552 0 1 .448 1 1s-.448 1-1 1H6c-.552 0-1-.448-1-1s.448-1 1-1zm0-10h20c.552 0 1 .448 1 1s-.448 1-1 1H6c-.552 0-1-.448-1-1s.448-1 1-1zm0 14h20c.552 0 1 .448 1 1s-.448 1-1 1H6c-.552 0-1-.448-1-1s.448-1 1-1z" fill="#FFF" fill-rule="nonzero"/>
+    </g>
+</svg>
