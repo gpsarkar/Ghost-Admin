@@ -172,6 +172,7 @@
                             autocapitalize="off"
                             autocorrect="off"
                             autocomplete="off"
+                            disabled="disabled"
                             value=(readonly user.email)
                             input=(action (mut user.email) value="target.value")
                             focus-out=(action "validate" "email" target=user)
@@ -278,13 +279,14 @@
                     </p>
                 {{/gh-form-group}}
 
-                <hr />
+                {{!--<hr />--}}
 
             </fieldset>
 
         </form> {{! user details form }}
 
         {{!-- If an administrator is viewing Owner's profile or we're using Ghost.org OAuth then hide inputs for change password --}}
+        {{!-- THIS SECTION IS IRRRRELEVENT IN ACTIVTE DIRECTORY BASED BLOG 
         {{#if canChangePassword}}
             <form id="password-reset" class="user-profile" novalidate="novalidate" autocomplete="off" {{action (perform user.saveNewPassword) on="submit"}}>
                 <fieldset>
@@ -341,5 +343,6 @@
                 </fieldset>
             </form> {{! change password form }}
         {{/if}}
+        --}}
     </div>
 </section>
