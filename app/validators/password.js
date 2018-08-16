@@ -62,12 +62,13 @@ export default BaseValidator.extend({
         blogUrlWithSlash = blogUrl.match(/\/$/) ? blogUrl : `${blogUrl}/`;
 
         blogTitle = blogTitle ? blogTitle.trim().toLowerCase() : blogTitle;
-
+        
+        // Not needed as vaildation happens at active directory
         // password must be longer than 10 characters
-        if (!validator.isLength(password || '', 10)) {
-            model.get('errors').add(errorTarget, 'Password must be at least 10 characters long');
-            return this.invalidate();
-        }
+        //if (!validator.isLength(password || '', 10)) {
+        //    model.get('errors').add(errorTarget, 'Password must be at least 10 characters long');
+        //    return this.invalidate();
+        //}
 
         password = password.toString();
 

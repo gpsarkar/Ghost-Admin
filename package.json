@@ -1,7 +1,7 @@
 {
   "name": "ghost-admin",
-  "version": "1.25.4",
-  "description": "Ember.js admin client for Ghost",
+  "version": "1.25.4pr1",
+  "description": "Ghost Ember.js admin client with ldap authentication support",
   "author": "Ghost Foundation",
   "homepage": "http://ghost.org",
   "repository": {
@@ -9,7 +9,7 @@
     "url": "git://github.com/TryGhost/Ghost-Admin.git"
   },
   "bugs": "https://github.com/TryGhost/Ghost/issues",
-  "contributors": "https://github.com/TryGhost/Ghost-Admin/graphs/contributors",
+  "contributors": [],
   "license": "MIT",
   "private": true,
   "directories": {
