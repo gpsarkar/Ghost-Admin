@@ -52,3 +52,4 @@ testem.log
 /concat-stats-for
 
 /root
+/cjs-transform
