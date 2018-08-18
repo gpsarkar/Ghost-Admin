@@ -29,8 +29,8 @@ export default PasswordValidator.extend({
         }
     },
 
-    password(model) {
+    //password(model) {
         // we don't need any validation for password, irrelevent fo active directory auth
         //this.passwordValidation(model);
-    }
+    //}
 });

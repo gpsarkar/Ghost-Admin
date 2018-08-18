@@ -1,5 +1,5 @@
 import BaseValidator from './base';
-import validator from 'npm:validator';
+//import validator from 'npm:validator';
 
 const BAD_PASSWORDS = [
     '1234567890',

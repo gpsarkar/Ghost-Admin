@@ -3,11 +3,9 @@ import Controller, {inject as controller} from '@ember/controller';
 import RSVP from 'rsvp';
 import ValidationEngine from 'ghost-admin/mixins/validation-engine';
 import {alias} from '@ember/object/computed';
-import {isArray as isEmberArray} from '@ember/array';
 import {isVersionMismatchError} from 'ghost-admin/services/ajax';
 import {inject as service} from '@ember/service';
 import {task} from 'ember-concurrency';
-import {computed} from '@ember/object';
 
 export default Controller.extend(ValidationEngine, {
     application: controller(),
@@ -70,17 +68,17 @@ export default Controller.extend(ValidationEngine, {
                     // So this is a new user, send an invitation to complete the signup process                    
                     //let contributorRole = yield this.get('contributorRole');
                     let contributorRoleUrl = this.get('ghostPaths.url').api('roles/contributor');
-                    let contributorRole = yield this.get('ajax').request(contributorRoleUrl)
+                    let contributorRole = yield this.get('ajax').request(contributorRoleUrl);
                     
                     let email = this.get('signin.identification');
                     let inviteUrl = this.get('ghostPaths.url').api('invites');
-                    yield this.get('ajax').post(inviteUrl, {data: {invites:[
+                    yield this.get('ajax').post(inviteUrl, {data: { invites: [
                         {
                             token: null,
                             expires: null,
                             status: null,
                             email: email,
-                            role_id: contributorRole.id,
+                            role_id: contributorRole.id
                         }
                     ]}});
 
@@ -119,7 +117,7 @@ export default Controller.extend(ValidationEngine, {
         }
     }).drop(),
 
-    forgotten: task(function* () {
+    forgotten: function () {
 
         // This feature is disabled in intranet blog. User needs to change/reset their active directory password by usual means
         let notifications = this.get('notifications');
@@ -168,5 +166,5 @@ export default Controller.extend(ValidationEngine, {
             }
         }
         */
-    })
+    }
 });
