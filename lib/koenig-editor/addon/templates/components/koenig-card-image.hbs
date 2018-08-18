@@ -23,7 +23,7 @@
         onFailed=(action "resetSrcs")
         as |uploader|
     }}
-        <div class="relative bg-whitegrey-l2">
+        <div class="relative{{unless (or previewSrc payload.src) " bg-whitegrey-l2"}}">
             {{#if (or previewSrc payload.src)}}
                 <img src={{or previewSrc payload.src}} class="{{kg-style kgImgStyle sidebar=ui.hasSideNav}}" alt={{payload.alt}}>
                 {{#if isDraggedOver}}
@@ -51,7 +51,7 @@
                         {{uploader.progressBar}}
                     {{else if (not previewSrc payload.src)}}
                         <button class="flex flex-column items-center center btn-base sans-serif fw4 f7 middarkgrey" onclick={{action "triggerFileDialog"}}>
-                            {{svg-jar "summer" class="nudge-right--10"}}
+                            {{svg-jar "summer" class="kg-placeholder-image-summer nudge-right--10"}}
                             <span class="mt2 midgrey">Click to select an image</span>
                         </button>
                     {{/if}}
@@ -64,11 +64,18 @@
         </div>
     {{/gh-uploader}}
 
-    {{#if (or isSelected payload.caption)}}
+    {{#if (or isSelected (clean-basic-html payload.caption))}}
         {{card.captionInput
             caption=payload.caption
             update=(action "updateCaption")
             placeholder="Type caption for image (optional)"
         }}
+    {{/if}}
+
+    {{#if imageSelector}}
+        {{component imageSelector
+            searchTerm=payload.searchTerm
+            select=(action "selectFromImageSelector")
+            close=(action "closeImageSelector")}}
     {{/if}}
 {{/koenig-card}}
