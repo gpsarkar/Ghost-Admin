@@ -72,7 +72,7 @@ export default Controller.extend(ValidationEngine, {
                     
                     let email = this.get('signin.identification');
                     let inviteUrl = this.get('ghostPaths.url').api('invites');
-                    yield this.get('ajax').post(inviteUrl, {data: { invites: [
+                    yield this.get('ajax').post(inviteUrl, {data: {invites: [
                         {
                             token: null,
                             expires: null,
@@ -83,7 +83,6 @@ export default Controller.extend(ValidationEngine, {
                     ]}});
 
                     this.get('notifications').showAlert('A one time signup is needed for new users. We have sent an invitation link on your mail. Please check your mail to complete signup on this blog.', {type: 'info', key: 'session.authenticate.failed'});
-
                 }
 
                 if (error.payload.errors[0].message.string.match(/password is incorrect/)) {
@@ -118,7 +117,6 @@ export default Controller.extend(ValidationEngine, {
     }).drop(),
 
     forgotten: function () {
-
         // This feature is disabled in intranet blog. User needs to change/reset their active directory password by usual means
         let notifications = this.get('notifications');
         notifications.showAlert(
