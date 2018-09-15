@@ -1,14 +1,21 @@
 <div class="gh-flow">
     <div class="gh-flow-content-wrap">
         <section class="gh-flow-content">
-            <form id="login" method="post" class="gh-signin" novalidate="novalidate" {{action "authenticate" on="submit"}}>
+
+            <div class="gh-setting">
+                <div class="gh-setting-content">
+                    <div class="gh-setting-title">Prorigo blog signin !</div>                    
+                </div>
+            </div>
+            
+            <form id="login" method="post" class="gh-signin" novalidate="novalidate" {{action "authenticate" on="submit"}}>                                
                 {{#gh-form-group errors=signin.errors hasValidated=hasValidated property="identification"}}
                     <span class="gh-input-icon gh-icon-mail">
                         {{svg-jar "email"}}
                         {{gh-trim-focus-input
                             class="email"
                             type="email"
-                            placeholder="Email Address"
+                            placeholder="Prorigo email id"
                             name="identification"
                             autocapitalize="off"
                             autocorrect="off"
@@ -25,7 +32,7 @@
                         {{gh-text-input
                             class="password"
                             type="password"
-                            placeholder="Password"
+                            placeholder="Prorigo domain password"
                             name="password"
                             tabindex="2"
                             autocorrect="off"
