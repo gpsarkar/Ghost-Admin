@@ -27,10 +27,5 @@ export default PasswordValidator.extend({
             model.get('errors').add('email', 'Invalid Email.');
             this.invalidate();
         }
-    },
-
-    //password(model) {
-        // we don't need any validation for password, irrelevent fo active directory auth
-        //this.passwordValidation(model);
-    //}
+    }
 });

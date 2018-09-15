@@ -26,7 +26,7 @@ export default Controller.extend(ValidationEngine, {
 
     init() {
         this._super(...arguments);
-        this.authProperties = ['identification', 'password'];
+        this.authProperties = ['identification', 'password'];        
     },
 
     signin: alias('model'),
@@ -60,8 +60,6 @@ export default Controller.extend(ValidationEngine, {
                     err.message = err.message.htmlSafe();
                 });
 
-                this.set('flowErrors', error.payload.errors[0].message.string);
-
                 if (error.payload.errors[0].message.string.match(/user with that email/)) {
                     //this.get('signin.errors').add('identification', '');                                                            
                     
@@ -82,7 +80,9 @@ export default Controller.extend(ValidationEngine, {
                         }
                     ]}});
 
-                    this.get('notifications').showAlert('A one time signup is needed for new users. We have sent an invitation link on your mail. Please check your mail to complete signup on this blog.', {type: 'info', key: 'session.authenticate.failed'});
+                    this.get('notifications').showAlert('A one time registration is needed for new users. We have sent an invitation link on your mail ' + email + '. Please check your mail to complete registration on this blog.', {type: 'info', key: 'session.authenticate.failed'});
+                } else {
+                    this.set('flowErrors', error.payload.errors[0].message.string);
                 }
 
                 if (error.payload.errors[0].message.string.match(/password is incorrect/)) {
@@ -116,13 +116,14 @@ export default Controller.extend(ValidationEngine, {
         }
     }).drop(),
 
-    forgotten: function () {
+    forgotten: task(function* () {
         // This feature is disabled in intranet blog. User needs to change/reset their active directory password by usual means
         let notifications = this.get('notifications');
         notifications.showAlert(
-            'You can login to this blog using your domain email address and password. Resetting domain credentials not supported on this blog.',
+            'You can login to this blog using your Prorigo email address and domain password. Resetting domain credential is not supported on this blog.',
             {type: 'info', key: 'forgot-password.send.success'}
         );
+        yield;
         
         /*
         let email = this.get('signin.identification');
@@ -164,5 +165,5 @@ export default Controller.extend(ValidationEngine, {
             }
         }
         */
-    }
+    }).drop()
 });
