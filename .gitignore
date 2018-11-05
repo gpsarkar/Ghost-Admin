@@ -51,3 +51,8 @@ Session.vim
 testem.log
 /concat-stats-for
 jsconfig.json
+
+
+/root
+/ghostjsadmin
+
