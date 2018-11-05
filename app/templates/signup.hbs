@@ -58,12 +58,14 @@
                             type="password"
                             id="password"
                             name="password"
-                            placeholder="At least 10 characters"
+                            placeholder="Domain password"
+                            onenter=(action "signup")
                             autocorrect="off"
                             value=(readonly signupDetails.password)
                             input=(action (mut signupDetails.password) value="target.value")
                             focus-out=(action "validate" "password")}}
                     </span>
+                    <span class="form-group"><p>Password required for active directory authentication only. It won't be saved on this blog.  </p></span>
                     {{gh-error-message errors=signupDetails.errors property="password"}}
                 {{/gh-form-group}}
 

@@ -96,6 +96,7 @@
                 {{/unless}}
 
                 <ul class="nav-list nav-list-block">
+                    {{!-- 
                     <li class="nav-list-item" {{action "showSubview" "meta-data"}} data-test-button="meta-data">
                         <button type="button">
                             <b>Meta Data</b>
@@ -117,6 +118,7 @@
                         </button>
                         {{svg-jar "arrow-right"}}
                     </li>
+                    --}}
                     <li class="nav-list-item" {{action "showSubview" "codeinjection"}} data-test-button="codeinjection">
                         <button type="button">
                             <b>Code Injection</b>
@@ -291,6 +293,7 @@
                         </div>
                     {{/if}}
 
+                    {{!--
                     {{#if (eq subview "facebook-data")}}
                         <div class="settings-menu-header subview">
                             <button {{action "closeSubview"}} class="back settings-menu-header-action" data-test-button="close-psm-subview">{{svg-jar "arrow-left"}}<span class="hidden">Back</span></button>
@@ -360,7 +363,8 @@
                             </form>
                         </div>
                     {{/if}}
-
+                    --}}
+                    
                     {{#if (eq subview "codeinjection")}}
                         <div class="settings-menu-header subview">
                             <button {{action "closeSubview"}} class="back settings-menu-header-action" data-test-button="close-psm-subview">{{svg-jar "arrow-left"}}<span class="hidden">Back</span></button>

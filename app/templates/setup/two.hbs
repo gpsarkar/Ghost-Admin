@@ -55,7 +55,7 @@
                 type="email"
                 id="email"
                 name="email"
-                placeholder="Eg. john@example.com"
+                placeholder="Prorigo email id"
                 autocorrect="off"
                 value=(readonly email)
                 input=(action (mut email) value="target.value")
@@ -64,7 +64,7 @@
         </span>
         {{gh-error-message errors=errors property="email"}}
     {{/gh-form-group}}
-
+    
     {{#gh-form-group errors=errors hasValidated=hasValidated property="password"}}
         <label for="password">Password</label>
         <span class="gh-input-icon gh-icon-lock">
@@ -74,7 +74,7 @@
                 type="password"
                 id="password"
                 name="password"
-                placeholder="At least 10 characters"
+                placeholder="Prorigo domain password"
                 autocorrect="off"
                 value=(readonly password)
                 input=(action (mut password) value="target.value")
@@ -82,7 +82,7 @@
                 data-test-password-input=true}}
         </span>
         {{gh-error-message errors=errors property="password"}}
-    {{/gh-form-group}}
+    {{/gh-form-group}}    
 
     {{#gh-task-button
         task=setup

@@ -50,6 +50,9 @@ Session.vim
 /libpeerconnection.log
 testem.log
 /concat-stats-for
+
+/root
+/cjs-transform
 jsconfig.json
 
 
