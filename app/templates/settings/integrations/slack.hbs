@@ -1,0 +1,64 @@
+<section class="gh-canvas">
+    <header class="gh-canvas-header">
+        <h2 class="gh-canvas-title" data-test-screen-title>
+            {{#link-to "settings.integrations"}}Integrations{{/link-to}}
+            <span>{{svg-jar "arrow-right"}}</span>
+            Slack
+        </h2>
+        <section class="view-actions">
+            {{gh-task-button task=save class="gh-btn gh-btn-blue gh-btn-icon" data-test-save-button=true}}
+        </section>
+    </header>
+
+    {{#if showLeaveSettingsModal}}
+        {{gh-fullscreen-modal "leave-settings"
+            confirm=(action "leaveSettings")
+            close=(action "toggleLeaveSettingsModal")
+            modifier="action wide"}}
+    {{/if}}
+
+    <section class="view-container">
+        <br>
+        <section class="app-grid">
+            <div class="app-cell">
+                <img class="app-icon" src="assets/img/slackicon.png" />
+            </div>
+            <div class="app-cell">
+                <h3>Slack</h3>
+                <p>A messaging app for teams</p>
+            </div>
+        </section>
+
+        <form class="app-config-form" id="slack-settings" novalidate="novalidate" {{action "save" on="submit"}}>
+            <div class="gh-setting-header">Slack configuration</div>
+            <div class="gh-setting">
+                <div class="gh-setting-content gh-setting-content--no-action">
+                    <div class="gh-setting-title">Webhook URL</div>
+                    <div class="gh-setting-desc">Automatically send newly published posts to a channel in Slack or any Slack-compatible service like Discord or Mattermost.</div>
+                    <div class="gh-setting-content-extended">
+                        {{#gh-form-group errors=slackSettings.errors hasValidated=slackSettings.hasValidated property="url"}}
+                            {{gh-text-input
+                                placeholder="https://hooks.slack.com/services/..."
+                                name="slack[url]"
+                                value=(readonly slackSettings.url)
+                                input=(action "updateURL" value="target.value")
+                                keyEvents=(hash
+                                    Enter=(action "save")
+                                )
+                                focus-out=(action "triggerDirtyState")
+                                data-test-slack-url-input=true
+                            }}
+                            {{#unless slackSettings.errors.url}}
+                                <p>Set up a new incoming webhook <a href="https://my.slack.com/apps/new/A0F7XDUAZ-incoming-webhooks" target="_blank">here</a>, and grab the URL.</p>
+                            {{else}}
+                                {{gh-error-message errors=slackSettings.errors property="url"}}
+                            {{/unless}}
+                        {{/gh-form-group}}
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        {{gh-task-button "Send test notification" task=sendTestNotification successText="Sent" class="gh-btn gh-btn-green gh-btn-icon" disabled=testNotificationDisabled data-test-send-notification-button=true}}
+    </section>
+</section>

@@ -128,10 +128,8 @@ export default Controller.extend({
             });
         },
 
-        downloadFile(url) {
-            let dbUrl = this.get('ghostPaths.url').api(url);
-            let accessToken = this.get('session.data.authenticated.access_token');
-            let downloadURL = `${dbUrl}?access_token=${accessToken}`;
+        downloadFile(endpoint) {
+            let downloadURL = this.get('ghostPaths.url').api(endpoint);
             let iframe = $('#iframeDownload');
 
             if (iframe.length === 0) {
